@@ -13,7 +13,7 @@ public class PriceService
 
     public async Task<Product> UpdateOnlyNewestPrice(List<Product> products)
     {
-        foreach (var p in products.OrderByDescending(o => o.Created).Take(1))
+        foreach (var p in products.OrderByDescending(o => o.Created).Take(3))
         {
             await _inventoryService.UpdateAsync(p);
         }
