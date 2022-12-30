@@ -31,9 +31,7 @@ namespace MoqMyWordsTesting
 
             //For the sake of the argument a silly way to evaluate any price less than 4 is valid
             //This is only to make sure the test fails.
-            service.Verify(u => u.UpdateAsync(It.Is<Product>(p => EvaluatePrice(p))),Times.Once);
-
-            await Task.CompletedTask;
+            service.Verify(u => u.UpdateAsync(It.Is<Product>(p => EvaluatePrice(p))),Times.AtMostOnce);          
         }   
 
         private bool EvaluatePrice(Product product)
